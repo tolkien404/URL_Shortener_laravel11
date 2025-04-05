@@ -13,6 +13,20 @@
         </p>
     </div>
 
+    <div class="w-full text-center flex justify-center mb-3">
+        <label class="form-control w-full max-w-xs">
+            <div class="label">
+                <span class="label-text">Expires After (Optional)</span>
+            </div>
+            <input type="datetime-local" wire:model='expires_at' class="input input-bordered w-full max-w-xs"/>
+            <p class="text-red-500">
+                @error('expires_at')
+                {{ $message }}
+                @enderror
+            </p>
+        </label>
+    </div>
+
     @if ($result)
     <div class="mb-3 text-center w-full flex justify-center">
         <div role="alert" class="alert alert-success w-1/4 text-white">
@@ -25,6 +39,11 @@
                 $result }}</a>
         </div>
     </div>
+
+    <div class="flex justify-center my-3">
+        {!! $qr !!}
+    </div>
+
     @endif
 
     <div class="w-full text-center" x-data="{
